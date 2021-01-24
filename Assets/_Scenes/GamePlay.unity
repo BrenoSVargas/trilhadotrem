@@ -1385,8 +1385,9 @@ GameObject:
   - component: {fileID: 1437148855}
   - component: {fileID: 1437148857}
   - component: {fileID: 1437148856}
+  - component: {fileID: 1437148858}
   m_Layer: 5
-  m_Name: LetraDaMusica
+  m_Name: Music Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1443,7 +1444,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Perto de uma linha f\xE9rrea, vida em primeiro..."
+  m_Text: 
 --- !u!222 &1437148857
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1452,6 +1453,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437148854}
   m_CullTransparentMesh: 0
+--- !u!114 &1437148858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437148854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9748471c4c0e4d54fb92a424cc241569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subtitleFile: {fileID: 4900000, guid: 0ef5e31653a0df34ba86f6a3decadaf4, type: 3}
+  playOnAwake: 1
+  highlightStartTag: <Color=Yellow>
+  highlightEndTag: </Color>
 --- !u!1 &1493051673
 GameObject:
   m_ObjectHideFlags: 0
