@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 
     public static UIManager instance;
     private Button _playGame, _exitGame, _home, _okbtn;
+    public int indexScene;
 
     void Awake()
     {
@@ -44,6 +45,9 @@ public class UIManager : MonoBehaviour
             _home.onClick.AddListener(Home);
             _okbtn.onClick.AddListener(OkBtn);
         }
+
+        indexScene = SceneManager.GetActiveScene().buildIndex;
+
     }
     void Start()
     {
