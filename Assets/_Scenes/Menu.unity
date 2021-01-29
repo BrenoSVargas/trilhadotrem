@@ -1217,22 +1217,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeStart: 0
   questions:
-  - music: 
-    optionIs: 0
-    option0: 
-    option1: 
-  - music: 
-    optionIs: 0
-    option0: 
-    option1: 
-  - music: 
-    optionIs: 0
-    option0: 
-    option1: 
-  - music: 
-    optionIs: 0
-    option0: 
-    option1: 
+  - optionIs: 1
+    option0: Lugar
+    option1: Amar
+  - optionIs: 1
+    option0: "Tens\xE3o"
+    option1: Energia
+  - optionIs: 1
+    option0: Estacionar
+    option1: Dirigir
+  - optionIs: 1
+    option0: Carona
+    option1: "Dan\xE7a"
+  - optionIs: 1
+    option0: Mal
+    option1: Errado
+  - optionIs: 0
+    option0: Bicho
+    option1: Lixo
+  - optionIs: 1
+    option0: Trem
+    option1: Rio
+  - optionIs: 1
+    option0: Mil
+    option1: Oito
 --- !u!4 &1364862611
 Transform:
   m_ObjectHideFlags: 0
