@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
     private Text optTxt0, optTxt1;
 
     private bool answer;
+    private bool hitTheAnswer = false;
+    private bool waitForAnswer = false;
+    private int questionNumber = 0;
+
 
     //Singleton
     private static GameManager _instance;
@@ -43,8 +47,12 @@ public class GameManager : MonoBehaviour
 
     void Load(Scene scene, LoadSceneMode mode)
     {
-        if (UIManager.instance.indexScene == 2)
+        if (UIManager.instance.IndexScene == 2)
         {
+            timeStart = 0;
+            questionNumber = 0;
+            hitTheAnswer = false;
+            waitForAnswer = false;
 
             optBtn0 = GameObject.Find("BtnOption0").GetComponent<Button>();
             optBtn1 = GameObject.Find("BtnOption1").GetComponent<Button>();
@@ -66,7 +74,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (UIManager.instance.indexScene == 2)
+        if (UIManager.instance.IndexScene == 2)
         {
             timeStart += Time.deltaTime;
 
@@ -76,45 +84,68 @@ public class GameManager : MonoBehaviour
 
     void CheckTimeQuestion()
     {
-        if (timeStart < 25f && timeStart > 19f)
+        if (timeStart > 19f && questionNumber == 0)
         {
-            GetQuestion(questions[0]);
+            waitForAnswer = true;
+            GetQuestion(questions[questionNumber]);
+            questionNumber++;
         }
-        else if (timeStart > 30f && timeStart < 37f)
+        else if (timeStart > 30f && questionNumber == 1)
         {
-            GetQuestion(questions[1]);
+            waitForAnswer = true;
+            GetQuestion(questions[questionNumber]);
+            questionNumber++;
         }
-        else if (timeStart > 54f && timeStart < 62f)
+        else if (timeStart > 54f && questionNumber == 2)
         {
-            GetQuestion(questions[2]);
+            waitForAnswer = true;
+            GetQuestion(questions[questionNumber]);
+            questionNumber++;
         }
-        else if (timeStart > 65f && timeStart < 72f)
+        else if (timeStart > 65f && questionNumber == 3)
         {
-            GetQuestion(questions[3]);
-        }
-
-        else if (timeStart > 90f && timeStart < 98f)
-        {
-            GetQuestion(questions[4]);
-        }
-
-        else if (timeStart > 99.5f && timeStart < 107f)
-        {
-            GetQuestion(questions[5]);
+            waitForAnswer = true;
+            GetQuestion(questions[questionNumber]);
+            questionNumber++;
         }
 
-        else if (timeStart > 125f && timeStart < 132f)
+        else if (timeStart > 90f && questionNumber == 4)
         {
-            GetQuestion(questions[6]);
+            waitForAnswer = true;
+            GetQuestion(questions[questionNumber]);
+            questionNumber++;
         }
-        else if (timeStart > 138f && timeStart < 143f)
+
+        else if (timeStart > 99.5f && questionNumber == 5)
         {
-            GetQuestion(questions[7]);
+            waitForAnswer = true;
+            GetQuestion(questions[questionNumber]);
+            questionNumber++;
         }
-        else
+
+        else if (timeStart > 125f && questionNumber == 6)
         {
-            optBtn0.gameObject.SetActive(false);
-            optBtn1.gameObject.SetActive(false);
+            waitForAnswer = true;
+            GetQuestion(questions[questionNumber]);
+            questionNumber++;
+        }
+        else if (timeStart > 138f && questionNumber == 7)
+        {
+            waitForAnswer = true;
+            GetQuestion(questions[questionNumber]);
+            questionNumber++;
+        }
+        else if (timeStart > 165f)
+        {
+            StopAllCoroutines();
+            UIManager.instance.Win();
+        }
+        else if (hitTheAnswer)
+        {
+            StopAllCoroutines();
+            StartCoroutine(DesableOptions());
+            hitTheAnswer = false;
+
         }
 
 
@@ -130,30 +161,69 @@ public class GameManager : MonoBehaviour
         optTxt1.text = question.option1;
 
         answer = question.optionIs;
+        StartCoroutine(StartQuestion());
+
     }
 
 
     void OptChoose0()
     {
-        if (answer == true)
+        if (waitForAnswer == true)
         {
-            Debug.Log("Acertou");
-        }
-        else
-        {
-            Debug.Log("Errou");
+            waitForAnswer = false;
+            hitTheAnswer = true;
+            if (answer == true)
+            {
+                UIManager.instance.Correct(0);
+                Instantiate(questions[questionNumber - 1].sound);
+            }
+            else
+            {
+                UIManager.instance.Wrong(0);
+                ChanceManager.Instance.ChanceSub();
+            }
         }
     }
 
     void OptChoose1()
     {
-        if (answer == false)
+        if (waitForAnswer == true)
         {
-            Debug.Log("Acertou");
+            waitForAnswer = false;
+            hitTheAnswer = true;
+            if (answer == false)
+            {
+                UIManager.instance.Correct(1);
+            }
+            else
+            {
+                UIManager.instance.Wrong(1);
+                ChanceManager.Instance.ChanceSub();
+            }
+
         }
-        else
+    }
+
+    IEnumerator StartQuestion()
+    {
+
+        yield return new WaitForSeconds(5);
+        if (waitForAnswer)
         {
-            Debug.Log("Errou");
+            ChanceManager.Instance.ChanceSub();
+            hitTheAnswer = true;
+            waitForAnswer = false;
         }
+
+    }
+
+    IEnumerator DesableOptions()
+    {
+        yield return new WaitForSeconds(1.5f);
+        UIManager.instance.DesableCorrection();
+
+        yield return new WaitForSeconds(0.2f);
+        optBtn0.gameObject.SetActive(false);
+        optBtn1.gameObject.SetActive(false);
     }
 }

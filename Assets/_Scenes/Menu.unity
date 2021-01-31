@@ -254,7 +254,7 @@ GameObject:
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -270,7 +270,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f0207c16a083947bdcec32ce2a0ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indexScene: 0
+  correctImg:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  wrongImg:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &491917612
 Transform:
   m_ObjectHideFlags: 0
@@ -279,7 +286,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 491917610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 197.11653, y: 235, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1199,7 +1206,7 @@ GameObject:
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1220,27 +1227,35 @@ MonoBehaviour:
   - optionIs: 1
     option0: Lugar
     option1: Amar
+    sound: {fileID: 978650278147958785, guid: d4d1ee04c9a81544b9a4d2c2269f1243, type: 3}
   - optionIs: 1
     option0: "Tens\xE3o"
     option1: Energia
+    sound: {fileID: 8771042482433932053, guid: 24490f53e5b32e84ab8224c0ca4b8c2c, type: 3}
   - optionIs: 1
     option0: Estacionar
     option1: Dirigir
+    sound: {fileID: 8440239163196766682, guid: b0f5c7ef19861904bb13e3efe9fca4ec, type: 3}
   - optionIs: 1
     option0: Carona
     option1: "Dan\xE7a"
+    sound: {fileID: 2092833758121220892, guid: b4ad0b06b0b2abb48bc2733fdfdc97e1, type: 3}
   - optionIs: 1
     option0: Mal
     option1: Errado
+    sound: {fileID: 5531217687766373796, guid: 948c3e4570320364c9947d679b379171, type: 3}
   - optionIs: 0
     option0: Bicho
     option1: Lixo
+    sound: {fileID: 6578380626072783575, guid: c7d3a5e153fa20148b7190ea1d82c2a4, type: 3}
   - optionIs: 1
     option0: Trem
     option1: Rio
+    sound: {fileID: 1445832465602422179, guid: 8527fa4383fa34f498383b986c674c9c, type: 3}
   - optionIs: 1
     option0: Mil
     option1: Oito
+    sound: {fileID: 2887517470382561102, guid: 6aa0058a11baa7a49932da75ce6df7d4, type: 3}
 --- !u!4 &1364862611
 Transform:
   m_ObjectHideFlags: 0
@@ -1249,7 +1264,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1364862609}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 268.86465, y: 306.3273, z: -1.4267342}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
